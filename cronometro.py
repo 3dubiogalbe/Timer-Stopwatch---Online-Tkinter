@@ -18,22 +18,22 @@ def contar_tempo():
     global decimo_atual 
 
     while rodando:
-        for i in range(10):
-            time.sleep(0.1)  
+        for i in range(100):
+            time.sleep(0.01)  
             decimo_atual = i
             if rodando == False:
                 break
             
-            if i == 9:
+            if i == 99:
                 tempo += 1
 
 def atualizar_label():
     minutos = tempo // 60
     segundos = tempo % 60
     label_timer.config(
-        text=f"{minutos:02}:{segundos:02}:{decimo_atual:02}"
+        text=f"{minutos:02}:{segundos:02},{decimo_atual:02}"
         )
-    janela.after(100, atualizar_label) # Significa: "Depois de você executar sua própria função, espere 0.1 segundo e execute novamente, atualizando o label"
+    janela.after(10, atualizar_label) # Significa: "Depois de você executar sua própria função, espere 0.1 segundo e execute novamente, atualizando o label"
 
 def iniciar():
     global rodando
@@ -116,7 +116,7 @@ btn_reset.pack(
     )
 
 janela.after(
-    100, 
+    10, 
     atualizar_label
     ) # Significa: "Daqui a 0.1 segundo, rode a função atualizar_label"
 
